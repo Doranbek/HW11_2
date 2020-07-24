@@ -6,53 +6,31 @@ namespace HW11_2
 {
     class Student
     {
-        private string firstName;
-        private string lastName;
-        private string patronymic;
+        private string fullName;
         private string group;
         private string facultet;
         private int Cours { get; set; } = 1;
-        private int age;
+        private int age=18;
         private string DateOfBirth { get; set; }
         private string Gender { get; set; }
-        public string FirstName
+               
+        public string FullName
         {
-            get { return firstName; }
+            get { return fullName; }
             private set
-            {
-                if (value == "")
-                {
-                    Console.WriteLine("Значение FirstName пустое");
-                }
+            {                
+                if (value != "") fullName = value;
+                else Console.WriteLine("Значение FullName пустое");            
+            }
+        }
 
-                firstName = value;
-            }
-        }
-        public string LastName
-        {
-            get { return lastName; }
-            private set
-            {
-                if (value == "") Console.WriteLine("Значение LastName пустое");
-                lastName = value;
-            }
-        }
-        public string Patronymic
-        {
-            get { return patronymic; }
-            private set
-            {
-                if (value == "") Console.WriteLine("Значение Patronymic пустое");
-                patronymic = value;
-            }
-        }
         public string Group
         {
             get { return group; }
             private set
             {
                 if (value == "") Console.WriteLine("Значение Group пустое");
-                group = value;
+                else group = value;
             }
         }
 
@@ -62,9 +40,10 @@ namespace HW11_2
             private set
             {
                 if (value == "") Console.WriteLine("Значение Facultet пустое");
-                facultet = value;
+                else facultet = value;
             }
         }
+        
         public int Age
         {
             get { return age; }
@@ -72,26 +51,19 @@ namespace HW11_2
             {
                 if (value < 17 || value > 99)
                 {
-                    value = 18;
+                    
                     Console.WriteLine("Возраст должен быть больше 16 и меньше 99");
                 }
-                age = value;
+                else age = value;
             }
 
-        }
-        public string FullName
-        {
-            get { return $"{LastName} {FirstName.Substring(0, 1)}.{Patronymic.Substring(0, 1)}."; }
-        }
+        }       
 
         public Student() { }
 
-        public Student(string firstName, string lastName, string patronymic, string group,
-                    string facultet, int cours, int age, string dateOfBirth, string gender)
+        public Student(string fullName, string group, string facultet, int cours, int age, string dateOfBirth, string gender)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Patronymic = patronymic;
+            FullName = fullName;
             Group = group;
             Facultet = facultet;
             Cours = cours;
@@ -99,16 +71,17 @@ namespace HW11_2
             DateOfBirth = dateOfBirth;
             Gender = gender;
         }
-        public void SetFullName(string firstName, string lastName, string patronymic)
+       
+        public void SetFullName(string fullName)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Patronymic = patronymic;
+            FullName = fullName;
         }
+        
         public void GetFullName()
         {
-            Console.WriteLine($"\nФамилия:{LastName}\nИмя:{FirstName}\nОтчество:{Patronymic}");
+            Console.WriteLine($"\nФИО: {FullName}");
         }
+        
         public void Info()
         {
 
